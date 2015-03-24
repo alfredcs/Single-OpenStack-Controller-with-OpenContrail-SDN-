@@ -1,0 +1,12 @@
+150119 23:40:51 mysqld_safe Logging to '/var/lib/mysql/stack70.err'.
+150119 23:40:51 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+150119 23:40:51 mysqld_safe WSREP: Running position recovery with --log_error='/var/lib/mysql/wsrep_recovery.aAFRSX' --pid-file='/var/lib/mysql/stack70-recover.pid'
+150119 23:40:54 mysqld_safe WSREP: Failed to recover position: 
+150119 23:40:54 mysqld_safe wsrep-recovery has failed to recover, continuing with startup
+150119 23:40:55 mysqld_safe mysqld from pid file /var/lib/mysql/stack70.pid ended
+150119 23:47:54 mysqld_safe Logging to '/var/lib/mysql/stack70.err'.
+150119 23:47:54 mysqld_safe A mysqld process already exists
+150119 23:51:46 mysqld_safe Logging to '/var/lib/mysql/stack70.err'.
+150119 23:51:46 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+150119 23:51:46 mysqld_safe Skipping wsrep-recover for empty datadir: /var/lib/mysql
+150119 23:51:46 mysqld_safe Assigning 00000000-0000-0000-0000-000000000000:-1 to wsrep_start_position

@@ -1,0 +1,34 @@
+
+listen contrail-api 0.0.0.0:8082
+    balance roundrobin
+    server contrail-api-1 first_contrail_controller:9100 check port 60120 inter 2000 fall 4 rise 3
+    #server contrail-api-2 second_contrail_controller:9100 check port 60120 inter 2000 fall 4 rise 3
+    #server contrail-api-3 third_contrail_controller:9100 check port 60120 inter 2000 fall 4 rise 3
+
+listen discovery-api 0.0.0.0:5998
+    balance roundrobin
+    server discovery-api-1 first_contrail_controller:9110 check port 60121 inter 2000 fall 4 rise 3
+    #server discovery-api-2 second_contrail_controller:9110 check port 60121 inter 2000 fall 4 rise 3
+    #server discovery-api-3 third_contrail_controller:9110 check port 60121 inter 2000 fall 4 rise 3
+
+frontend https_frontend_neutron-api
+    bind *:9696 ssl crt /etc/contrail/ssl/certs/server01.pem
+    mode http
+    option httpclose
+    option httplog
+    option forwardfor
+    reqadd X-Forwarded-Proto:\ https
+    default_backend neutron-api
+
+backend neutron-api
+    mode http
+    balance roundrobin
+    server neutron-api-1 first_contrail_controller:9697 check port 60122 inter 2000 fall 4 rise 3
+    #server neutron-api-2 second_contrail_controller:9697 check port 60122 inter 2000 fall 4 rise 3
+    #server neutron-api-3 third_contrail_controller:9697 check port 60122 inter 2000 fall 4 rise 3
+
+listen analytics-api 0.0.0.0:8081
+    balance roundrobin
+    server analytics-api-1 first_contrail_controller:9081 check port 60123 inter 2000 fall 4 rise 3
+    #server analytics-api-2 second_contrail_controller:9081 check port 60123 inter 2000 fall 4 rise 3
+    #server analytics-api-3 third_contrail_controller:9081 check port 60123 inter 2000 fall 4 rise 3
